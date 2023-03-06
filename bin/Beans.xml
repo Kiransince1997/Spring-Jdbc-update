@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+<context:component-scan base-package="com.kiran"/>
+
+<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	<property name="url" value="jdbc:mysql://127.0.0.1:3306/employee?useSSL=false"/>
+	<property name="username" value="root"/>
+	<property name="password" value="Kiran@12345"/>
+	<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+</bean>
+
+<bean id="jdbcTemplateObject" class="org.springframework.jdbc.core.JdbcTemplate">
+	<constructor-arg name="dataSource" ref="dataSource"/>
+</bean>
+<bean id="studentRowMapper" class="com.kiran.helper.StudentRowMapper">
+	
+</bean>
+
+<!-- <bean id="studentDAO" class="com.kiran.dao.StudentDAOImpl">
+	<property name="jdbcTemplate" ref="jdbcTemplateObject"/>
+</bean> -->
+</beans>
+        
